@@ -1,0 +1,17 @@
+{
+  "title": "Winter Gift Drive",
+  "category": "one-time",
+  "recurrence": "",
+  "date": "2025-12-01",
+  "dateLabel": "December 2025",
+  "dateNeedsVerification": false,
+  "venue": "",
+  "summary": "We collected winter gifts for children at a local children's home — clothes, toys, books and craft supplies.",
+  "description": "Before the holidays, our community came together to collect gifts for children at a local children's home, including clothes, toys, books, and craft supplies.",
+  "facts": ["Clothes", "Toys", "Books", "Craft supplies"],
+  "impact": "Gifts were collected for children at a local children's home.",
+  "cover": "",
+  "coverAlt": "",
+  "gallery": [],
+  "featured": false
+}

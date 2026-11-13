@@ -1,0 +1,18 @@
+{
+  "contacts": {
+    "phone": "",
+    "email": "",
+    "telegram": "",
+    "instagram": "actcom.bis"
+  },
+  "forms": {
+    "helpFormUrl": "",
+    "volunteerFormUrl": ""
+  },
+  "stats": [
+    { "value": "", "label": "Charity events organised" },
+    { "value": "", "label": "Volunteers involved" },
+    { "value": "", "label": "KGS raised for good causes" },
+    { "value": "", "label": "People & organisations supported" }
+  ]
+}

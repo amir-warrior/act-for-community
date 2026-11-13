@@ -1,0 +1,23 @@
+{
+  "title": "Charity Volleyball Tournament",
+  "category": "annual",
+  "recurrence": "Every summer",
+  "date": "2026-06-07",
+  "dateLabel": "Every summer · Latest: June 7, 2026",
+  "dateNeedsVerification": false,
+  "venue": "Bilimkana Arena",
+  "summary": "Our summer tradition: mixed teams, friendly competition and lunch for every player — with all proceeds going to someone who needs support.",
+  "description": "Every summer, teams of friends, classmates and colleagues meet at Bilimkana Arena for our charity volleyball tournament. We have organised it for approximately three years.\n\nTo keep the games fair and fun for everyone, each team can include no more than two club or competitive players.",
+  "facts": [
+    "Held every summer for approximately three years",
+    "Teams of 6–8 players",
+    "Maximum two club or competitive players per team",
+    "Lunch for all participants",
+    "Cash prizes for the top three teams"
+  ],
+  "impact": "June 7, 2026: all proceeds supported a young girl with cerebral palsy and microcephaly.",
+  "cover": "",
+  "coverAlt": "",
+  "gallery": [],
+  "featured": true
+}

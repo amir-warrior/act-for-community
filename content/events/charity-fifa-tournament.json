@@ -1,0 +1,22 @@
+{
+  "title": "Charity FIFA Tournament",
+  "category": "annual",
+  "recurrence": "Every autumn",
+  "date": "2025-11-09",
+  "dateLabel": "Every autumn · Latest: November 9, 2025",
+  "dateNeedsVerification": false,
+  "venue": "Mario Game Club",
+  "summary": "An individual FIFA competition on PS5 — with certificates for everyone, a coffee break with baked goods and funds raised for a good cause.",
+  "description": "Every autumn we swap the court for the console. Our FIFA tournament is an individual competition on PS5, open to anyone who wants to take part.\n\nEvery participant receives a certificate, and there is a coffee break with baked goods between matches.",
+  "facts": [
+    "Individual FIFA competition on PS5",
+    "Open to individual participants",
+    "Participation certificates for everyone",
+    "Coffee break with baked goods"
+  ],
+  "impact": "November 9, 2025: funds supported the Kaynar centre, which helps stray animals.",
+  "cover": "",
+  "coverAlt": "",
+  "gallery": [],
+  "featured": true
+}

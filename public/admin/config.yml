@@ -1,0 +1,105 @@
+# Decap CMS — content manager for Act for Community.
+# Open https://<your-site>/admin to edit events, team, contacts and form links.
+# Locally: run `npm run cms` in one terminal and `npm run dev` in another, then open http://localhost:3000/admin
+
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    description: Every event shown on the Events page. Add a new event with “New Event”.
+    folder: content/events
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Category
+        name: category
+        widget: select
+        default: one-time
+        options:
+          - { label: Annual event, value: annual }
+          - { label: One-time event, value: one-time }
+      - { label: "Recurrence (annual events only)", name: recurrence, widget: string, required: false, hint: "e.g. Every summer" }
+      - label: Date (or date of the latest edition)
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: YYYY-MM-DD
+        time_format: false
+        picker_utc: true
+        hint: Used to sort events — newest first.
+      - { label: Date shown on the site, name: dateLabel, widget: string, required: false, hint: "e.g. “December 2025” or “Every March · Latest: March 15, 2026”. Leave empty to show the date above." }
+      - { label: Date still needs verification, name: dateNeedsVerification, widget: boolean, default: false, required: false }
+      - { label: Venue, name: venue, widget: string, required: false }
+      - { label: Short summary (for cards), name: summary, widget: text }
+      - { label: Full description, name: description, widget: text, hint: "Separate paragraphs with an empty line." }
+      - { label: Format & key facts, name: facts, widget: list, required: false, field: { label: Fact, name: fact, widget: string } }
+      - { label: Impact (verified results only), name: impact, widget: text, required: false }
+      - { label: Cover photo, name: cover, widget: image, required: false }
+      - { label: Cover photo description (for screen readers), name: coverAlt, widget: string, required: false }
+      - { label: Gallery, name: gallery, widget: list, required: false, field: { label: Photo, name: photo, widget: image } }
+      - { label: Featured (bigger card), name: featured, widget: boolean, default: false, required: false }
+
+  - name: team
+    label: Leadership team
+    label_singular: Team member
+    folder: content/team
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}} — {{role}}"
+    fields:
+      - { label: Full name, name: name, widget: string }
+      - { label: Position, name: role, widget: string }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Short biography, name: bio, widget: text, required: false }
+      - { label: Order on page, name: order, widget: number, value_type: int, default: 10, required: false, hint: "Smaller numbers appear first." }
+
+  - name: settings
+    label: Site settings
+    editor: { preview: false }
+    files:
+      - name: site
+        label: Contacts, forms & numbers
+        file: content/settings/site.json
+        format: json
+        fields:
+          - label: Contacts
+            name: contacts
+            widget: object
+            fields:
+              - { label: Phone, name: phone, widget: string, required: false }
+              - { label: Email, name: email, widget: string, required: false }
+              - { label: Telegram username, name: telegram, widget: string, required: false, hint: "Without @" }
+              - { label: Instagram username, name: instagram, widget: string, required: false, hint: "Without @" }
+          - label: Google Forms
+            name: forms
+            widget: object
+            fields:
+              - { label: "“Ask for help” form link", name: helpFormUrl, widget: string, required: false, hint: "Paste the full https://forms.gle/… link. Leave empty to show “coming soon”." }
+              - { label: "Volunteer application form link", name: volunteerFormUrl, widget: string, required: false }
+          - label: Impact numbers (home page)
+            name: stats
+            widget: list
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: Number (verified only), name: value, widget: string, required: false, hint: "e.g. 15+ or 3,000. Leave empty until verified." }
+              - { label: Label, name: label, widget: string }

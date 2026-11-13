@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* ────────────────────────────────────────────────────────────
+   Act for Community — design tokens
+   Blue + white brand, light-blue surfaces, one warm "sun" accent
+   (a nod to the sun on the Kyrgyz flag) for the key actions.
+   ──────────────────────────────────────────────────────────── */
+@theme inline {
+  --font-display: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+}
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe7ff;
+  --color-brand-200: #bdd3ff;
+  --color-brand-300: #8fb3ff;
+  --color-brand-400: #5a8cfa;
+  --color-brand-500: #3369f0;
+  --color-brand-600: #1f52d8;
+  --color-brand-700: #1a42ad;
+  --color-brand-800: #1b3a88;
+  --color-brand-900: #18306a;
+  --color-brand-950: #0c1a3f;
+
+  --color-ink: #0c1a3f;
+  --color-ink-soft: #46557a;
+  --color-sky: #eaf2ff;
+  --color-sky-deep: #d7e6ff;
+
+  --color-sun: #ffc531;
+  --color-sun-deep: #ffb300;
+  --color-sun-soft: #fff4d6;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-ping-soft: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes ping-soft {
+    0% { transform: scale(1); opacity: 0.7; }
+    80%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand-400);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  @media (width >= 40rem) { padding-inline: 1.5rem; }
+  @media (width >= 64rem) { padding-inline: 2rem; }
+}
+
+/* Serif italic accent inside display headings — the editorial touch */
+@utility accent-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Soft dotted grid used behind heroes */
+@utility bg-dots {
+  background-image: radial-gradient(circle at 1px 1px, rgb(31 82 216 / 0.13) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Clearly-marked photo placeholder pattern */
+@utility bg-stripes {
+  background-color: var(--color-sky);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(31 82 216 / 0.06) 0 12px,
+    transparent 12px 24px
+  );
+}
+
+/* Light sweep across primary buttons on hover */
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  transition: transform 0.7s var(--ease-soft);
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+/* Cursor-following spotlight on value cards (--mx/--my set from JS) */
+.spotlight {
+  background-image: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 0%),
+    rgb(51 105 240 / 0.12),
+    transparent 45%
+  );
+}
+
+/* Mobile bottom CTA bar needs room at the end of every page */
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

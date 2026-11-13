@@ -1,0 +1,23 @@
+{
+  "title": "Charity Basketball Tournament",
+  "category": "annual",
+  "recurrence": "Every March",
+  "date": "2026-03-15",
+  "dateLabel": "Every March · Latest: March 15, 2026",
+  "dateNeedsVerification": false,
+  "venue": "Bilimkana Arena",
+  "summary": "A fast-paced 3×3 streetball tournament every March — group stage, playoffs and prizes, with all proceeds going to charity.",
+  "description": "Every March our 3×3 streetball tournament fills Bilimkana Arena. Teams play through a group stage before the playoffs decide the winners.\n\nParticipation is paid, and all proceeds go to charity.",
+  "facts": [
+    "3×3 streetball format",
+    "Teams of up to five players",
+    "Group stage followed by playoffs",
+    "Paid participation",
+    "Prizes for the top three teams"
+  ],
+  "impact": "All proceeds from the tournament go to charity.",
+  "cover": "",
+  "coverAlt": "",
+  "gallery": [],
+  "featured": true
+}

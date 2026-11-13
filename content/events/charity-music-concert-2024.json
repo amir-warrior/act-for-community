@@ -1,0 +1,17 @@
+{
+  "title": "Charity Music Concert",
+  "category": "one-time",
+  "recurrence": "",
+  "date": "2024-12-16",
+  "dateLabel": "December 16, 2024",
+  "dateNeedsVerification": false,
+  "venue": "BIS",
+  "summary": "Singers and musicians took the stage at BIS, alongside a bake sale — for the treatment of a 10-year-old girl.",
+  "description": "Held at BIS, the concert brought together singers and musicians from our community, with a bake sale running alongside the performances.",
+  "facts": ["Performances by singers and musicians", "Bake sale"],
+  "impact": "All proceeds supported the medical treatment of a 10-year-old girl with acute lymphocytic leukaemia.",
+  "cover": "",
+  "coverAlt": "",
+  "gallery": [],
+  "featured": true
+}
