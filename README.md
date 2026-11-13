@@ -64,7 +64,7 @@ npm run cms          # во втором терминале
 
 ## Деплой (рекомендуется Netlify)
 
-1. Залить проект в GitHub, подключить репозиторий в Netlify (base directory: `act-for-community`).
+1. Подключить репозиторий `amir-warrior/act-for-community` в Netlify (base directory — пусто, build command — `npm run build`).
 2. В Netlify включить **Identity** и **Git Gateway**, регистрацию — *Invite only*.
 3. Пригласить core team по email — они смогут входить в `/admin`.
 4. Задать переменную `NEXT_PUBLIC_SITE_URL` (например `https://actforcommunity.kg`).
