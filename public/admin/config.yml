@@ -1,9 +1,13 @@
 # Decap CMS — content manager for Act for Community.
 # Open https://<your-site>/admin to edit events, team, contacts and form links.
+# (Local editing via `npm run cms` still works thanks to local_backend below.)
 # Locally: run `npm run cms` in one terminal and `npm run dev` in another, then open http://localhost:3000/admin
 
+# Editors sign in with their GitHub account (must be a collaborator on the repo).
+# Login goes through Netlify's OAuth provider — see README → "Вход в CMS".
 backend:
-  name: git-gateway
+  name: github
+  repo: amir-warrior/act-for-community
   branch: main
 
 local_backend: true
