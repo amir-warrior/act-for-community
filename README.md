@@ -65,9 +65,18 @@ npm run cms          # во втором терминале
 ## Деплой (рекомендуется Netlify)
 
 1. Подключить репозиторий `amir-warrior/act-for-community` в Netlify (base directory — пусто, build command — `npm run build`).
-2. В Netlify включить **Identity** и **Git Gateway**, регистрацию — *Invite only*.
-3. Пригласить core team по email — они смогут входить в `/admin`.
-4. Задать переменную `NEXT_PUBLIC_SITE_URL` (например `https://actforcommunity.kg`).
+2. Задать переменную `NEXT_PUBLIC_SITE_URL` (например `https://act-for-community.netlify.app`).
+
+### Вход в CMS (`/admin`)
+
+Редакторы входят своим аккаунтом GitHub.
+
+1. GitHub → Settings → Developer settings → OAuth Apps → **New OAuth App**:
+   - Homepage URL: адрес сайта
+   - Authorization callback URL: `https://api.netlify.com/auth/done`
+2. Скопировать Client ID и создать Client secret.
+3. Netlify → Project configuration → Access & security → **OAuth** → Install provider → GitHub → вставить ID и secret.
+4. Каждого редактора добавить в репозиторий: GitHub → репозиторий → Settings → Collaborators.
 
 Каждое сохранение в CMS — это коммит в репозиторий; Netlify автоматически пересобирает сайт (~1–2 мин).
 
