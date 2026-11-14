@@ -11,7 +11,17 @@ import { TwoPaths } from "@/components/sections/TwoPaths";
 import { ButtonLink } from "@/components/ui/Button";
 import { getEvents, getSettings } from "@/lib/content";
 import { contactLinks } from "@/lib/links";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { HOME_DESCRIPTION, HOME_TITLE, jsonLd } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_US", url: "/", title: HOME_TITLE, description: HOME_DESCRIPTION },
+  twitter: { card: "summary_large_image", title: HOME_TITLE, description: HOME_DESCRIPTION },
+};
 
 const PILLARS = [
   {
@@ -47,19 +57,37 @@ export default function HomePage() {
 
   const [lead, ...rest] = events.slice(0, 6);
 
-  const jsonLd = {
+  // Tells search engines who we are (organisation card) and what this site is.
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "NGO",
-    name: "Act for Community",
-    url: SITE_URL,
-    description: "Student-led charity initiative in Bishkek, Kyrgyzstan.",
-    address: { "@type": "PostalAddress", addressLocality: "Bishkek", addressCountry: "KG" },
-    sameAs: [links.instagram?.href, links.telegram?.href].filter(Boolean),
+    "@graph": [
+      {
+        "@type": "NGO",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: `${SITE_URL}/favicon.svg`,
+        description: HOME_DESCRIPTION,
+        areaServed: { "@type": "City", name: "Bishkek" },
+        address: { "@type": "PostalAddress", addressLocality: "Bishkek", addressCountry: "KG" },
+        email: contacts.email || undefined,
+        telephone: contacts.phone || undefined,
+        sameAs: [links.instagram?.href, links.telegram?.href].filter(Boolean),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        inLanguage: "en",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />
 
       <HeroHome photos={heroPhotos} eventsCount={events.length} instagram={links.instagram} />
 

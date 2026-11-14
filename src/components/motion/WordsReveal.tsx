@@ -22,11 +22,12 @@ export function WordsReveal({
   as?: "h1" | "h2";
 }) {
   let i = 0;
-  const label = lines.map((l) => l.map((s) => (typeof s === "string" ? s : s.text)).join(" ")).join(" ");
+  // Real spaces between words keep the heading readable for search engines
+  // and screen readers ("Small acts. Together, …", not "Smallacts.Together,…").
   return (
-    <Tag className={className} aria-label={label}>
+    <Tag className={className}>
       {lines.map((line, li) => (
-        <span key={li} className="block" aria-hidden>
+        <span key={li} className="block">
           {line.map((seg, si) => {
             const text = typeof seg === "string" ? seg : seg.text;
             const accent = typeof seg !== "string" && seg.accent;
@@ -35,7 +36,9 @@ export function WordsReveal({
                 {text.split(" ").filter(Boolean).map((word, wi) => {
                   const idx = i++;
                   return (
-                    <span key={wi} className="inline-block overflow-hidden pr-[0.22em] pb-[0.08em] align-bottom">
+                    <Fragment key={wi}>
+                    {idx > 0 && " "}
+                    <span className="inline-block overflow-hidden pr-[0.06em] pb-[0.08em] align-bottom">
                       <motion.span
                         className={`inline-block ${accent ? "accent-serif text-brand-600" : ""}`}
                         initial={{ y: "110%", rotate: 4 }}
@@ -45,6 +48,7 @@ export function WordsReveal({
                         {word}
                       </motion.span>
                     </span>
+                    </Fragment>
                   );
                 })}
               </Fragment>

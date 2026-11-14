@@ -7,10 +7,15 @@ import { Reveal } from "@/components/motion/Reveal";
 import { WordsReveal } from "@/components/motion/WordsReveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { TwoPaths } from "@/components/sections/TwoPaths";
-import { getEvent, getEvents } from "@/lib/content";
+import { getEvent, getEvents, type EventItem } from "@/lib/content";
+import { absoluteUrl, jsonLd, pageMeta } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { CATEGORY_LABEL, eventDateLabel } from "@/lib/format";
 
 type Props = { params: Promise<{ slug: string }> };
+
+/** Only events that exist in the CMS get a page; anything else is a real 404. */
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getEvents().map((e) => ({ slug: e.slug }));
@@ -19,10 +24,49 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const event = getEvent((await params).slug);
   if (!event) return {};
-  return {
+  return pageMeta({
     title: event.title,
     description: event.summary,
-    openGraph: { title: event.title, description: event.summary, images: event.cover ? [event.cover] : undefined },
+    path: `/events/${event.slug}`,
+    image: `/events/${event.slug}/opengraph-image`,
+  });
+}
+
+/** "December 2025" → "2025-12"; exact dates stay YYYY-MM-DD. */
+function schemaDate(e: EventItem) {
+  return /^[A-Za-z]+ \d{4}$/.test(e.dateLabel?.trim() ?? "") ? e.date.slice(0, 7) : e.date;
+}
+
+function eventStructuredData(event: EventItem) {
+  const url = absoluteUrl(`/events/${event.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Event",
+        name: event.title,
+        description: event.summary,
+        url,
+        startDate: schemaDate(event),
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        image: [event.cover ? absoluteUrl(event.cover) : `${url}/opengraph-image`],
+        location: {
+          "@type": "Place",
+          name: event.venue || "Bishkek",
+          address: { "@type": "PostalAddress", addressLocality: "Bishkek", addressCountry: "KG" },
+        },
+        organizer: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Events", item: absoluteUrl("/events") },
+          { "@type": "ListItem", position: 3, name: event.title, item: url },
+        ],
+      },
+    ],
   };
 }
 
@@ -46,6 +90,7 @@ export default async function EventPage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(eventStructuredData(event))} />
       <article>
         <header className="relative overflow-hidden bg-gradient-to-b from-sky to-white pt-32 sm:pt-40">
           <div className="container-x relative">

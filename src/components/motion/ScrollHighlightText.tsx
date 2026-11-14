@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 
 /**
  * Big statement whose words "light up" one by one as the visitor scrolls.
@@ -13,13 +13,20 @@ export function ScrollHighlightText({ text, className = "" }: { text: string; cl
   const words = text.split(" ");
 
   return (
-    <p ref={ref} className={className} aria-label={text.replace(/\*/g, "")}>
+    <p ref={ref} className={className}>
       {words.map((raw, i) => {
         const accent = raw.startsWith("*");
         const word = raw.replace(/\*/g, "");
         const start = i / words.length;
         const end = start + 1 / words.length;
-        return <Word key={i} progress={scrollYProgress} range={[start, end]} accent={accent}>{word}</Word>;
+        return (
+          <Fragment key={i}>
+            {i > 0 && " "}
+            <Word progress={scrollYProgress} range={[start, end]} accent={accent}>
+              {word}
+            </Word>
+          </Fragment>
+        );
       })}
     </p>
   );
@@ -28,7 +35,7 @@ export function ScrollHighlightText({ text, className = "" }: { text: string; cl
 function Word({ children, progress, range, accent }: { children: string; progress: MotionValue<number>; range: [number, number]; accent: boolean }) {
   const opacity = useTransform(progress, range, [0.15, 1]);
   return (
-    <span aria-hidden className="relative mr-[0.25em] inline-block">
+    <span className="relative inline-block">
       <motion.span style={{ opacity }} className={accent ? "accent-serif text-brand-600" : ""}>
         {children}
       </motion.span>

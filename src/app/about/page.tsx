@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
@@ -8,10 +9,11 @@ import { TwoPaths } from "@/components/sections/TwoPaths";
 import { getEvents } from "@/lib/content";
 import { eventDateLabel, eventYear, formatDate } from "@/lib/format";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Goals & beliefs",
-  description: "The mission, values and goals behind Act for Community — a student-led charity initiative in Bishkek.",
-};
+  description: "The mission, values and goals behind Act for Community, a student-led charity in Bishkek: compassion, community, equality, initiative and impact.",
+  path: "/about",
+});
 
 const VALUES: { icon: IconName; title: string; text: string }[] = [
   { icon: "heart", title: "Compassion", text: "We care about people and their well-being." },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { EyeOff, Lock, ShieldCheck, Trash2, UserCheck } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
@@ -10,10 +11,11 @@ import { InstagramIcon, TelegramIcon } from "@/components/ui/BrandIcons";
 import { getSettings } from "@/lib/content";
 import { contactLinks, safeFormUrl } from "@/lib/links";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Ask for help",
   description: "If you or your family need support, you can apply to Act for Community. Every request is reviewed privately by our core team.",
-};
+  path: "/help",
+});
 
 const WAYS: { icon: IconName; title: string; text: string }[] = [
   { icon: "stethoscope", title: "Medical treatment", text: "We have held events to support the treatment of children facing serious illness." },

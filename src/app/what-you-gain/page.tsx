@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { CircleCheck, CircleX, NotebookPen } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -6,10 +7,11 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { SpotlightCard, type IconName } from "@/components/sections/SpotlightCard";
 import { ButtonLink } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "What you gain",
   description: "What volunteering with Act for Community can give you: leadership, teamwork, project and event management, and real community experience.",
-};
+  path: "/what-you-gain",
+});
 
 const BENEFITS: { icon: IconName; title: string; text: string }[] = [
   { icon: "flag", title: "Leadership experience", text: "Take responsibility for a part of an event and see it through." },

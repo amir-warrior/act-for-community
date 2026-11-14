@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
@@ -10,10 +11,11 @@ import { Marquee } from "@/components/ui/Marquee";
 import { getSettings } from "@/lib/content";
 import { contactLinks, safeFormUrl } from "@/lib/links";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Become a volunteer",
-  description: "Join Act for Community as a volunteer: help organise charity tournaments, fairs, concerts and drives in Bishkek.",
-};
+  description: "Join Act for Community as a volunteer in Bishkek. Help organise charity tournaments, fairs, concerts and drives, and learn by doing.",
+  path: "/volunteer",
+});
 
 const WHY = [
   { n: "01", title: "Every event needs people", text: "Tournaments, fairs and drives happen only because volunteers plan them, set them up and run them on the day." },

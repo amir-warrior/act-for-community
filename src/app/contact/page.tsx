@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { PageHero } from "@/components/ui/PageHero";
@@ -8,10 +9,11 @@ import { InstagramIcon, TelegramIcon } from "@/components/ui/BrandIcons";
 import { getSettings } from "@/lib/content";
 import { contactLinks } from "@/lib/links";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact",
-  description: "Contact Act for Community — Instagram, Telegram, email and phone.",
-};
+  description: "Contact Act for Community, the student-led charity in Bishkek. Reach us on Instagram, Telegram, email or phone about help, volunteering or partnerships.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const links = contactLinks(getSettings().contacts);

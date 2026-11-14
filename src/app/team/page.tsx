@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowUpRight, Info, UserRound } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
@@ -7,10 +8,11 @@ import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { TwoPaths } from "@/components/sections/TwoPaths";
 import { getTeam, type TeamMember } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Leadership team",
-  description: "Meet the students who lead Act for Community in Bishkek.",
-};
+  description: "Meet the students who lead Act for Community in Bishkek and organise our charity tournaments, fairs, concerts and gift drives.",
+  path: "/team",
+});
 
 /** How many empty slots to show while the team list hasn't been added to the CMS yet. */
 const PLACEHOLDER_SLOTS = 6;

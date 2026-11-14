@@ -7,7 +7,8 @@ import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { getSettings } from "@/lib/content";
 import { contactLinks } from "@/lib/links";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { HOME_DESCRIPTION } from "@/lib/seo";
 
 const unbounded = Unbounded({ subsets: ["latin", "cyrillic"], variable: "--font-unbounded", display: "swap" });
 const manrope = Manrope({ subsets: ["latin", "cyrillic"], variable: "--font-manrope", display: "swap" });
@@ -19,14 +20,12 @@ export const metadata: Metadata = {
     default: "Act for Community — student-led charity in Bishkek",
     template: "%s · Act for Community",
   },
-  description:
-    "Act for Community is a student-led charity initiative in Bishkek, Kyrgyzstan. We organise charity tournaments, fairs, concerts and drives to support people and causes in our city.",
-  openGraph: {
-    type: "website",
-    siteName: "Act for Community",
-    locale: "en_US",
-  },
+  description: HOME_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_US" },
+  twitter: { card: "summary_large_image" },
   icons: { icon: "/favicon.svg" },
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
