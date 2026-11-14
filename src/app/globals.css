@@ -9,6 +9,7 @@
   --font-display: var(--font-unbounded), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument), Georgia, serif;
+  --font-poster: var(--font-anton), Impact, "Arial Narrow", sans-serif;
 }
 
 @theme {
