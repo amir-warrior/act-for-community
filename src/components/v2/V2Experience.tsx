@@ -193,10 +193,10 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
           <div
             key={v.name}
             ref={(el) => void (pills.current[i] = el)}
-            className="absolute top-0 left-0 flex items-center gap-2 rounded-full border border-ink/10 bg-white/90 py-1.5 pr-3.5 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-ink shadow-[0_8px_24px_-12px_rgb(12_26_63/0.45)] backdrop-blur sm:py-2 sm:pr-4 sm:pl-2 sm:text-[13px]"
+            className="absolute top-0 left-0 flex items-center gap-2 rounded-full border border-ink/10 bg-white/90 py-1.5 pr-3.5 pl-1.5 text-[11px] font-semibold whitespace-nowrap text-ink shadow-[0_8px_24px_-12px_rgb(12_26_63/0.45)] backdrop-blur sm:py-2 sm:pr-4 sm:pl-2 sm:text-[13px] lg:gap-2.5 lg:py-2.5 lg:pr-5 lg:text-[15px]"
             style={{ opacity: 0, willChange: "transform, opacity" }}
           >
-            <span className="grid size-5 place-items-center rounded-full bg-brand-600 text-[9px] font-bold text-white tabular-nums sm:size-6 sm:text-[10px]">0{i + 1}</span>
+            <span className="grid size-5 place-items-center rounded-full bg-brand-600 text-[9px] font-bold text-white tabular-nums sm:size-6 sm:text-[10px] lg:size-7 lg:text-[11px]">0{i + 1}</span>
             {v.name}
           </div>
         ))}
@@ -208,17 +208,17 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
         data-tone="light"
         className="group/h fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-4 text-white transition-colors duration-300 data-[tone=dark]:text-ink sm:px-8 sm:py-6"
       >
-        <Link href="/v2" className="text-[11px] font-bold tracking-[0.28em] sm:text-xs">
+        <Link href="/v2" className="text-[11px] font-bold tracking-[0.28em] sm:text-xs lg:text-sm">
           ACT FOR COMMUNITY
         </Link>
-        <nav aria-label="Main" className="flex items-center gap-1 sm:gap-6">
-          <div className="hidden items-center gap-6 text-[11px] font-semibold tracking-[0.18em] uppercase md:flex">
+        <nav aria-label="Main" className="flex items-center gap-1 sm:gap-6 lg:gap-8">
+          <div className="hidden items-center gap-6 text-[11px] font-semibold tracking-[0.18em] uppercase md:flex lg:gap-8 lg:text-[13px]">
             <Link href="/about" className="hover:opacity-60">About</Link>
             <Link href="/events" className="hover:opacity-60">Events</Link>
             <Link href="/team" className="hover:opacity-60">Team</Link>
             <Link href="/volunteer" className="hover:opacity-60">Volunteer</Link>
           </div>
-          <Link href="/help" className="flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 text-xs font-bold text-ink transition-transform hover:-translate-y-0.5">
+          <Link href="/help" className="flex h-9 items-center gap-1.5 rounded-full bg-sun px-4 text-xs font-bold text-ink transition-transform hover:-translate-y-0.5 lg:h-11 lg:px-5 lg:text-sm">
             <Heart className="size-3.5" aria-hidden /> Ask for help
           </Link>
         </nav>
@@ -258,21 +258,20 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
 
           <motion.div style={{ opacity: heroFade }} className="absolute inset-x-0 bottom-0 z-[2] px-5 pb-10 sm:px-8 sm:pb-12">
             <div className="flex items-end justify-between gap-8">
-              <div className="max-w-xl">
-                <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase">Student-led charity · Bishkek</p>
-                <h1 className="mt-4 text-[2.4rem] leading-[1.02] font-semibold tracking-tight sm:text-6xl">
-                  Small acts.
-                  <br />
-                  Real change.
+              <div className="max-w-xl lg:max-w-4xl">
+                <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase lg:text-sm">Student-led charity · Bishkek</p>
+                <h1 className="mt-4 text-[2.6rem] leading-[1.0] font-semibold tracking-tight sm:text-6xl lg:mt-6 lg:text-[clamp(4.5rem,5.6vw,7.5rem)]">
+                  <span className="block whitespace-nowrap">Small acts.</span>
+                  <span className="block whitespace-nowrap">Real change.</span>
                 </h1>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65 sm:text-base">
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65 sm:text-base lg:mt-6 lg:max-w-xl lg:text-xl">
                   Students organising tournaments, concerts, fairs and drives — and turning them into support for people and causes in our city.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2.5">
-                  <Link href="/help" className="flex h-11 items-center gap-2 rounded-full bg-sun px-5 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5">
+                  <Link href="/help" className="flex h-11 items-center gap-2 rounded-full bg-sun px-5 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5 lg:h-14 lg:px-7 lg:text-base">
                     <Heart className="size-4" aria-hidden /> Ask for help
                   </Link>
-                  <Link href="/volunteer" className="flex h-11 items-center rounded-full border border-white/25 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10">
+                  <Link href="/volunteer" className="flex h-11 items-center rounded-full border border-white/25 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10 lg:h-14 lg:px-7 lg:text-base">
                     Become a volunteer
                   </Link>
                 </div>
@@ -292,12 +291,12 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
           <div className="sticky top-0 z-[2] flex h-[100svh] flex-col justify-between px-5 pt-24 pb-10 sm:px-8 sm:pt-28">
             <div className="flex items-start justify-between gap-6">
               <div>
-                <p className="text-[11px] font-bold tracking-[0.24em] text-brand-600 uppercase">02 — Our values</p>
-                <h2 className="mt-3 max-w-md text-3xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">
+                <p className="text-[11px] font-bold tracking-[0.24em] text-brand-600 uppercase lg:text-sm">02 — Our values</p>
+                <h2 className="mt-3 max-w-md text-3xl leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-7xl">
                   Six values. <span className="accent-serif text-brand-600">One team.</span>
                 </h2>
               </div>
-              <p className="hidden max-w-[16rem] text-right text-sm leading-relaxed text-ink-soft md:block">
+              <p className="hidden max-w-[16rem] text-right text-sm leading-relaxed lg:max-w-xs lg:text-base text-ink-soft md:block">
                 Every point on the ball is something we act on — at every tournament, fair and drive.
               </p>
             </div>
@@ -320,18 +319,18 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
         {/* 03 — Podium: annual tournaments */}
         <section ref={setSection(2)} className="relative h-[200vh] bg-[radial-gradient(ellipse_at_50%_20%,#13244f_0%,#0a1330_45%,#060b1b_85%)]">
           <div className="sticky top-0 z-[2] flex h-[100svh] flex-col justify-between px-5 pt-24 pb-8 sm:px-8 sm:pt-28 sm:pb-10">
-            <div className="max-w-md">
-              <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase">03 — Annual tournaments</p>
-              <h2 className="mt-3 text-3xl leading-[1.05] font-semibold tracking-tight sm:text-5xl">Played for a reason.</h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/60 sm:text-base">Prizes for the top three teams. The proceeds go to people and causes that need support.</p>
+            <div className="max-w-md lg:max-w-2xl">
+              <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase lg:text-sm">03 — Annual tournaments</p>
+              <h2 className="mt-3 text-3xl leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-7xl">Played for a reason.</h2>
+              <p className="mt-4 text-sm leading-relaxed text-white/60 sm:text-base lg:max-w-lg lg:text-lg">Prizes for the top three teams. The proceeds go to people and causes that need support.</p>
             </div>
-            <ul className="ml-auto w-full max-w-sm divide-y divide-white/10 border-y border-white/10">
+            <ul className="ml-auto w-full max-w-sm lg:max-w-md divide-y divide-white/10 border-y border-white/10">
               {annual.map((e) => (
                 <li key={e.slug}>
                   <Link href={`/events/${e.slug}`} className="group flex items-center justify-between gap-4 py-3.5">
                     <span>
                       <span className="block text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">{e.recurrence}</span>
-                      <span className="mt-0.5 block font-semibold">{e.title}</span>
+                      <span className="mt-0.5 block font-semibold lg:text-xl">{e.title}</span>
                     </span>
                     <ArrowUpRight className="size-4 text-white/40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-sun" aria-hidden />
                   </Link>
@@ -352,15 +351,15 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
           {/* Layer 2 (in front of the ball): name + actions */}
           <div className="sticky top-0 z-[2] -mt-[100svh] flex h-[100svh] flex-col items-center px-5">
             <div className="mt-auto mb-[6vh] flex flex-col items-center text-center">
-              <h2 className="flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h2 className="flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-3xl lg:text-5xl">
                 <span className="h-px w-8 bg-white/50" aria-hidden /> Act for Community
               </h2>
-              <p className="mt-3 max-w-sm text-sm text-white/60">Need support, or ready to help? Both start with one step.</p>
+              <p className="mt-3 max-w-sm text-sm text-white/60 lg:mt-4 lg:max-w-md lg:text-lg">Need support, or ready to help? Both start with one step.</p>
               <div className="mt-6 flex flex-wrap justify-center gap-2.5">
-                <Link href="/help" className="flex h-11 items-center gap-2 rounded-full bg-white px-5 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5">
+                <Link href="/help" className="flex h-11 items-center gap-2 rounded-full bg-white px-5 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5 lg:h-14 lg:px-7 lg:text-base">
                   <Heart className="size-4" aria-hidden /> Ask for help
                 </Link>
-                <Link href="/volunteer" className="flex h-11 items-center rounded-full border border-white/25 px-5 text-sm font-bold transition-colors hover:bg-white/10">
+                <Link href="/volunteer" className="flex h-11 items-center rounded-full border border-white/25 px-5 text-sm font-bold transition-colors hover:bg-white/10 lg:h-14 lg:px-7 lg:text-base">
                   Become a volunteer
                 </Link>
               </div>
@@ -373,8 +372,8 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div>
-                <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase">05 — Stories</p>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl">Every event, one cause.</h2>
+                <p className="text-[11px] font-bold tracking-[0.24em] text-sun uppercase lg:text-sm">05 — Stories</p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl lg:text-7xl">Every event, one cause.</h2>
               </div>
               <Link href="/events" className="inline-flex items-center gap-1.5 text-sm font-bold text-white/70 hover:text-white">
                 All events <ArrowUpRight className="size-4" />
@@ -384,9 +383,9 @@ export function V2Experience({ annual, stories, instagram }: { annual: V2Event[]
               {stories.map((e) => (
                 <li key={e.slug} className="border-b border-white/10">
                   <Link href={`/events/${e.slug}`} className="group grid gap-1 py-5 transition-colors hover:bg-white/[0.03] sm:grid-cols-[10rem_1fr_1.3fr_2rem] sm:items-center sm:gap-6 sm:px-3">
-                    <span className="text-xs font-semibold tracking-wide text-white/40">{e.date}</span>
-                    <span className="text-lg font-semibold transition-colors group-hover:text-sun">{e.title}</span>
-                    <span className="text-sm leading-snug text-white/55">{e.impact}</span>
+                    <span className="text-xs font-semibold tracking-wide text-white/40 lg:text-sm">{e.date}</span>
+                    <span className="text-lg font-semibold transition-colors group-hover:text-sun lg:text-2xl">{e.title}</span>
+                    <span className="text-sm leading-snug text-white/55 lg:text-base">{e.impact}</span>
                     <ArrowUpRight className="hidden size-5 text-white/30 transition-all group-hover:rotate-45 group-hover:text-sun sm:block" aria-hidden />
                   </Link>
                 </li>
